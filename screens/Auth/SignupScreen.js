@@ -21,7 +21,13 @@ function SignupScreen() {
         email,
         createdAt: new Date().toISOString(),
       });
-      authCtx.authenticate(token);
+
+      const userData = {
+        name: name,
+        email: email,
+      };
+
+      authCtx.authenticate(token, userData);
     } catch (error) {
       Alert.alert(
         "Authetication failed!",

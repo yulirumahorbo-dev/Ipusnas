@@ -15,10 +15,8 @@ function LoginScreen() {
     setIsAuthenticating(true);
     try {
       const { token, localId } = await login(email, password);
-      authCtx.authenticate(token, email);
-
       const userData = await fetchUser(localId);
-      authCtx.setUserData(userData);
+      authCtx.authenticate(token, userData);
       console.log("Fetched userData:", userData);
     } catch (error) {
       console.log("Login error:", error.response?.data || error.message);
@@ -26,6 +24,7 @@ function LoginScreen() {
         "Authentication failed!",
         "Could not log you in. Please check your credentials or try again later!"
       );
+    } finally {
       setIsAuthenticating(false);
     }
   }

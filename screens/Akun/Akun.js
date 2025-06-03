@@ -7,7 +7,15 @@ import { useContext, useEffect, useState } from "react";
 
 function Akun() {
   const authCtx = useContext(AuthContext);
-  const { userData } = useContext(AuthContext);
+  const { userData, isLoading } = authCtx;
+
+  if (isLoading) {
+    return <Text style={styles.loadingText}>Loading...</Text>;
+  }
+
+  if (!userData) {
+    return <Text style={styles.loadingText}>User data not found.</Text>;
+  }
 
   return (
     <View style={styles.container}>
@@ -25,8 +33,8 @@ function Akun() {
           }}
           resizeMode="cover"
         />
-        <Text style={styles.nama}>{userData?.name}</Text>
-        <Text style={styles.email}>{userData?.email}</Text>
+        <Text style={styles.nama}>Name: {userData.name}</Text>
+        <Text style={styles.email}>Email: {userData.email}</Text>
       </Pressable>
 
       <View style={{ marginHorizontal: 16 }}>
@@ -137,5 +145,11 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     marginVertical: 2,
     fontFamily: "open-sans-bold",
+  },
+  loadingText: {
+    flex: 1,
+    textAlign: "center",
+    marginTop: 50,
+    fontSize: 16,
   },
 });
