@@ -4,10 +4,9 @@ import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDiVNGW05WUn3PEgcjG2Sle8Epju1hIFj4",
-  authDomain:
-    "https://ipusnas-19cc3-default-rtdb.asia-southeast1.firebasedatabase.app",
+  authDomain: "ipusnas-19cc3.firebaseapp.com",
   projectId: "ipusnas-19cc3",
-  storageBucket: "ipusnas-19cc3.firebasestorage.app",
+  storageBucket: "ipusnas-19cc3.appspot.com",
   messagingSenderId: "480724020948",
   appId: "1:480724020948:android:5302d5c9447555a7815541",
 };
